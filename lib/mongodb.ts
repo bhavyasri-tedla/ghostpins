@@ -1,4 +1,5 @@
-﻿import { MongoClient, ServerApiVersion } from "mongodb";
+
+import { MongoClient, ServerApiVersion } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB || "ghostpins";
@@ -39,5 +40,7 @@ export async function getMongoClient() {
 
 export async function getDatabase() {
   const mongoClient = await getMongoClient();
+
+  // Always use the database name configured in .env.local.
   return mongoClient.db(dbName);
 }
